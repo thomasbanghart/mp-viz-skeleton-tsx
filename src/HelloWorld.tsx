@@ -6,13 +6,22 @@ type HelloWorldProps = {
 }
 
 export const HelloWorld: FunctionComponent<HelloWorldProps> = (props: HelloWorldProps) => {
-    const [message, setMessage] = useState<string>("Hello World")
+    const initialState: HelloWorldProps = { message: "Hello World"}
+    const clearState = () => { setState({...initialState}) }
+
+    const [{message}, setState] = useState<any>(initialState)
 
     useEffect(() => {
-        setMessage(props.message)
+        clearState()
+        draw(props)
     }, [props])
 
-    return(
-    <>{message}</>
-    )
+    //Main draw logic goes here
+    function draw(props: HelloWorldProps) {
+        setState({ message: props.message === "" ?  initialState.message : props.message })
+        
+    }
+
+    return(<>{message}</>)
 };
+

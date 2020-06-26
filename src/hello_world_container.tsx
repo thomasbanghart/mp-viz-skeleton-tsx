@@ -35,7 +35,7 @@ const vis: HelloWorldChart = {
 
   updateAsync(data, element, config, queryResponse, details, doneRendering) {
     
-    this.chart = ReactDOM.render(<HelloWorld message={config.message}/>, element)
+    this.chart = ReactDOM.render(<HelloWorld message={config.text}/>, element)
 
   }
 }
